@@ -2,17 +2,45 @@
 # Purpose: outputs the result of a student and calculates their cgpa
 # Author: Ogunsanya Louis Similoluwa 236345
 
+# imports time module to cause intentional delays for better user experience and dramatic effect
+import time
+
 # collects students data and the number of courses offered
-name = input("Enter your name: ")
+name = input("Enter your Firstname: ")
+while True:
+    if name.isalpha():
+        print("...")
+        time.sleep(1)
+        break
+    name = input("Enter a valid Firstname: ")
 matric = input("Enter your Matric number: ")
-courses_offered = int(input("Enter the number of courses offered: "))
+matric_status = True
+while matric_status:
+    if matric.isdigit():
+        if len(matric) == 6:
+            print("...")
+            time.sleep(1)
+            matric_status = False
+        else:
+            matric = input("Your matric is a 6 digit number: ")
+            matric_status = True
+    else:
+        matric = input("Enter a valid matric number: ")
+        matric_status = True
+courses_offered = input("Enter the number of courses offered: ")
+while True:
+    if courses_offered.isdigit():
+        print("Loading...")
+        time.sleep(1)
+        break
+    courses_offered = input("Enter a valid number: ")
 
 # prints a new line and the a line of asterisks after collecting students data
 print('\n')
 print("*" * 30)
 
 # sets the number of times the user is asked for details on the courses offered
-repeat = range(courses_offered)
+repeat = range(int(courses_offered))
 
 # defining variables and declaring strings
 total_courses_passed = 0
